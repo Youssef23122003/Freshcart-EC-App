@@ -1,0 +1,86 @@
+<section class="flex w-[90%] mx-auto flex-col md:flex-row justify-center  min-h-screen bg-white">
+  <!-- Left side: Form -->
+  <div class="md:w-1/2 w-[90%] mx-auto bg-gray-100/60 border border-gray-300 rounded-xl shadow-md p-10 my-11">
+    <h1 class="text-lime-600 font-bold text-3xl mb-3 text-center">
+      Register to FreshCart
+    </h1>
+    <p class="text-gray-500 text-center mb-8">
+      Create an account and get the best deals.
+    </p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <app-input
+        [control]="registerForm.get('name')"
+        [typeInput]="'text'"
+        [labelInput]="'Name'"
+        [idInput]="'name'"
+        [NameInput]="'name'"
+      ></app-input>
+
+      <app-input
+        [control]="registerForm.get('email')"
+        [typeInput]="'email'"
+        [idInput]="'email'"
+        [NameInput]="'email'"
+        [labelInput]="'Email'"
+      ></app-input>
+
+
+          <app-input
+            [control]="registerForm.get('phone')"
+            [typeInput]="'tel'"
+            [idInput]="'phone'"
+            [NameInput]="'phone'"
+            [labelInput]="'Phone'"
+            >Accept only Egypt numbers</app-input>
+
+
+
+      <app-input
+        [control]="registerForm.get('password')"
+        [idInput]="'password'"
+        [NameInput]="'password'"
+        [labelInput]="'Password'"
+        >special character, uppercase, lowercase, numbers, letters</app-input
+      >
+
+      <app-input
+        [control]="registerForm.get('rePassword')"
+        [idInput]="'rePassword'"
+        [NameInput]="'rePassword'"
+        [labelInput]="'Confirm Password'"
+      ></app-input>
+
+      <button
+       
+        type="submit"
+        class="btn"
+      >
+        <span>Register</span>
+
+      </button>
+
+      @if (msgError) {
+        <p class="text-red-800 bg-red-100 text-center p-3 mt-4 rounded-md">
+          {{ msgError }}
+        </p>
+      }
+
+      <p class="text-center mt-6 text-gray-500">
+        Already have an account?
+        <a routerLink="/login" class="text-indigo-600 hover:underline">
+          Login here
+        </a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Right side: Image -->
+  <div class="md:w-1/2 hidden md:flex items-center self-start mt-5 p-6">
+    <img
+      src="/images/472267057_452888917873952_60063074330537300_n.jpg"
+      alt="FreshCart Banner"
+      class="rounded-2xl shadow-lg w-full h-[650px] object-cover"
+    />
+  </div>
+</section>

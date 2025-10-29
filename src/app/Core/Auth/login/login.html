@@ -1,0 +1,132 @@
+<section class="flex w-[90%] mx-auto flex-col md:flex-row  justify-center min-h-screen bg-white">
+  <!-- Left side: Form -->
+  <div class="md:w-1/2 w-[90%] mx-auto bg-gray-100/60 border border-gray-300 rounded-xl shadow-md p-10 my-11">
+    <h1 class="text-lime-600 font-bold text-3xl mb-3 text-center">
+      Login to FreshCart
+    </h1>
+    <p class="text-gray-500 text-center mb-8">
+      Welcome back! Please enter your details.
+    </p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <app-input
+        [typeInput]="'email'"
+        [idInput]="'email'"
+        [NameInput]="'Email'"
+        [labelInput]="'Email'"
+        [control]="loginForm.get('email')"
+      ></app-input>
+
+      <app-input
+
+        [idInput]="'password'"
+        [NameInput]="'password'"
+        [labelInput]="'Password'"
+        [control]="loginForm.get('password')"
+      >
+        special character, uppercase, lowercase, numbers, letters
+      </app-input>
+
+      <button
+
+        type="submit"
+        class="btn"
+      >
+        <span>Login</span>
+
+      </button>
+
+      @if (msgError) {
+        <p class="text-red-800 bg-red-100 text-center p-3 mt-4 rounded-md">
+          {{ msgError }}
+        </p>
+      }
+
+      <p class="text-center mt-6 text-gray-500">
+        Don’t have an account?
+        <a routerLink="/register" class="text-indigo-600 cursor-pointer hover:underline">
+          Register here
+        </a>
+      </p>
+      <p class="text-center mt-6 text-gray-500">
+       Can’t remember your password?
+        <a routerLink="/forget-password" class="text-indigo-600 cursor-pointer hover:underline">
+          Click here
+        </a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Right side: Image -->
+  <div class="md:w-1/2 hidden md:flex items-center  p-6">
+    <img
+      src="/images/472859898_452893827873461_3399820595731113351_n.jpg"
+      alt="FreshCart Shopping"
+      class="rounded-2xl shadow-lg w-full h-[650px] object-cover"
+    />
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <section class="md:w-1/2 bg-gray-200/50 border-gray-400 rounded-lg p-4 shadow-md border mx-auto my-14">
+<h1 class="text-lime-500 text-center font-bold text-3xl">Login Now</h1>
+
+<form [formGroup]="loginForm" action="">
+
+<app-input [typeInput]="'email'" [idInput]="'email'" [NameInput]="'Email'" [labelInput]="'Email'" [control]="loginForm.get('email')"></app-input>
+<app-input   [idInput]="'passsword'" [NameInput]="'password'" [labelInput]="'Passsword'" [control]="loginForm.get('password')">
+  special character, uppercase, lowercase, numbers, letters
+</app-input>
+
+
+<button [disabled] = "isLoading" (click)="submit()"  class="mt-5 btn">Login
+  @if(isLoading){
+ <span><i class="fas fa-spinner animate-spin"></i></span>
+  }
+
+  </button>
+@if(msgError){
+  <p class="text-red-900 bg-red-200 text-center p-4 mt-4">{{msgError}}</p>
+}
+</form>
+
+<!-- @if(email.errors && email.touched){
+<div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <span class="sr-only">Danger</span>
+  <div>
+
+      <ul class="mt-1.5 list-disc list-inside">
+        @if(email.getError('required')){
+            <li>input is requried</li>
+        }
+        @if(email.getError('email')){
+          <li>please enter a vaild email</li>
+        <li>Inclusion of at least one special character, e.g., ! @ # ?</li>
+        }
+
+
+    </ul>
+  </div>
+</div>
+} -->
+
+
+

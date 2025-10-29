@@ -1,0 +1,70 @@
+<section class="bg-gray-100 py-10 min-h-screen">
+  <div class="w-[90%] mx-auto">
+    <!-- العنوان وعدد العناصر -->
+    <div
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 border-b border-gray-300 pb-4"
+    >
+      <h1 class="text-3xl font-bold text-gray-800 mb-3 sm:mb-0">
+        ❤️ My Favorites
+      </h1>
+      <span class="text-orange-500 font-semibold text-lg">{{favList.length}}</span>
+    </div>
+
+    <!-- حالة فارغة -->
+    <!--
+    <div class="text-center py-20">
+      <i class="fa-regular fa-heart text-6xl text-gray-300 mb-4"></i>
+      <p class="text-lg text-gray-500">No favorite items yet.</p>
+    </div>
+    -->
+
+    <!-- قائمة العناصر -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    >
+      <!-- كارت المنتج -->
+     @for (fav of favList; track fav._id) {
+       <div
+        class="relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 group overflow-hidden"
+      >
+        <!-- زرار حذف -->
+        <button (click)="deleteFav(fav._id)"
+          class="absolute top-3 right-3 bg-white/80 backdrop-blur-md p-2 rounded-full text-red-500 hover:text-red-600 shadow-md transition-all duration-300 z-10"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+
+        <!-- صورة المنتج -->
+        <div
+          class="overflow-hidden bg-gray-100 flex items-center justify-center"
+        >
+          <img
+            [src]="fav.imageCover"
+            alt="Product"
+            class="w-40 h-40 object-contain transform group-hover:scale-110 transition-all duration-300"
+          />
+        </div>
+
+        <!-- تفاصيل المنتج -->
+        <div class="p-4 text-center">
+          <h3
+            class="text-lg font-semibold text-gray-800 mb-1 line-clamp-1 group-hover:text-lime-600 transition"
+          >
+           {{fav.title}}
+          </h3>
+          <p class="text-gray-500 mb-2">Category: {{fav.category.name}}</p>
+          <p class="text-lime-600 font-bold text-lg">{{fav.price}} EGP</p>
+
+          <button
+          [routerLink]="['/product-details', fav.slug, fav._id]"
+            class="mt-4 w-full bg-lime-600 hover:bg-lime-700 text-white font-medium py-2 rounded-lg transition-all duration-300"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+     }
+
+    </div>
+  </div>
+</section>

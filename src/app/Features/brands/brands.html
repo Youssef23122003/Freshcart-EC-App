@@ -1,0 +1,37 @@
+<section class="bg-gray-100 py-5 border border-gray-400">
+  <div class="container mx-auto w-[95%]">
+    <h2 class="text-lime-500 text-4xl font-bold">Popular Brands</h2>
+
+    <div class="parent  mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-7 relative min-h-[600px]">
+
+
+
+
+
+        @for (brand of brandsList; track brand._id) {
+         <div data-aos="flip-left" (click)="myModal.openBrandModal(brand._id)"
+  class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group p-4 text-center"
+>
+  <div class="relative overflow-hidden rounded-lg">
+    <img
+      [src]="brand.image"
+      alt="{{ brand.name }}"
+      class="w-full h-40 object-contain group-hover:scale-105 transition-transform duration-300"
+    />
+  </div>
+  <h6
+    class="fw-bold mt-4 text-gray-800 text-lg group-hover:text-lime-600 transition-colors duration-300"
+  >
+    {{ brand.name }}
+  </h6>
+</div>
+
+        }
+
+
+    </div>
+  </div>
+   <app-brand-modal></app-brand-modal>
+</section>
+
+

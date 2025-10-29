@@ -1,0 +1,64 @@
+<section class="flex w-[90%] mx-auto flex-col md:flex-row items-center  justify-center min-h-screen bg-white">
+<div class="md:w-1/2  bg-gray-100/60 border border-gray-300 rounded-xl shadow-md p-10">
+    <h1 class="text-lime-600 font-bold text-3xl mb-3 text-center">
+      Checkout Orders
+    </h1>
+
+
+    <form (ngSubmit)="submitCheckout()" [formGroup]="checkoutForm">
+      <app-input
+       [element]="'text'"
+       [control]="checkoutForm.get('shippingAddress')?.get('details')"
+       [idInput]="'details'"
+       [NameInput]="'details'"
+       [labelInput]="'details'"
+      ></app-input>
+
+      <app-input [element]="'text'" [control]="checkoutForm.get('shippingAddress')?.get('phone')"
+       [idInput]="'phone'"
+       [NameInput]="'phone'"
+       [labelInput]="'phone'">
+       Accept Only Egyptian Numbers
+      </app-input>
+
+      <app-input
+       [element]="'text'"
+       [control]="checkoutForm.get('shippingAddress')?.get('city')"
+       [idInput]="'city'"
+       [NameInput]="'city'"
+       [labelInput]="'city'">
+      </app-input>
+
+      <div class="flex gap-3">
+
+      </div>
+
+     <div class="flex gap-3">
+       <button
+       
+        type="submit"
+        class="btn"
+      >
+        <span>Checkout Cash</span>
+
+      </button>
+       <button
+
+        type="submit"
+        class="btn"
+      >
+        <span>Checkout By Visa</span>
+
+      </button>
+     </div>
+
+      @if (msgError) {
+        <p class="text-red-800 bg-red-100 text-center p-3 mt-4 rounded-md">
+          {{ msgError }}
+        </p>
+      }
+
+
+    </form>
+  </div>
+</section>

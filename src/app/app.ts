@@ -1,12 +1,30 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Footer } from "./Shared/Components/footer/footer.component";
+import { NgxSpinnerComponent } from "ngx-spinner";
+import 'aos/dist/aos.css';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Footer, NgxSpinnerComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('E-Commerce-Ap');
+
+  ngOnInit() {
+    AOS.init({
+      duration: 1000, // مدة الأنيميشن بالمللي ثانية
+      once: true, // يشغل الأنيميشن مرة واحدة فقط
+      easing: 'ease-in-out', // طريقة الحركة
+    });
+  }
+
+  
+
+  ngAfterViewInit() {
+    setTimeout(() => AOS.refresh(), 500);
+  }
 }

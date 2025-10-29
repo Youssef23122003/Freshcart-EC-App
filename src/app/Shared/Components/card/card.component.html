@@ -1,0 +1,48 @@
+<div data-aos="fade-up">
+  <div
+    class="card overflow-hidden group border border-gray-200 shadow-lg p-2 rounded-lg bg-white hover:shadow-xl hover:scale-105 hover:border-lime-600 transition-all duration-300 relative">
+
+
+    <button
+      (click)="addTofav(product._id)"
+
+      class="absolute top-3 right-3 z-10 bg-white/80 hover:bg-white border-none cursor-pointer rounded-full p-2 shadow-md transition-all duration-300">
+      <i
+     
+
+        class="fa-solid fa-heart">
+
+      </i>
+    </button>
+
+    <div [routerLink]="['/product-details', product.slug, product._id]" class="cursor-pointer">
+      <img
+        [src]="product.imageCover"
+        alt=""
+        class="w-full object-cover rounded-t-lg mb-3">
+
+      <h3 class="text-green-700 text-sm mb-1">
+        {{ product.category.name }}
+      </h3>
+
+      <h4 class="text-green-700 line-clamp-1 text-lg font-semibold mb-2">
+        {{ product.title | term: 3 }}
+      </h4>
+
+      <div class="flex justify-between items-center text-gray-700 relative">
+        <span class="font-medium">{{ product.price | currency }} EGP</span>
+
+        <span class="flex items-center space-x-1 text-sm">
+          <i class="fas fa-star text-yellow-400"></i>
+          <span>{{ product.ratingsAverage }}</span>
+        </span>
+      </div>
+    </div>
+
+    <button
+      (click)="addToCart(product._id)"
+      class="btn translate-y-[130%] group-hover:translate-y-0">
+      Add to Cart
+    </button>
+  </div>
+</div>
