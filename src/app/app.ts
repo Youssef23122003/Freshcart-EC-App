@@ -14,15 +14,9 @@ import * as AOS from 'aos';
 export class App {
   protected readonly title = signal('E-Commerce-Ap');
 
-  ngOnInit() {
-    AOS.init({
-      duration: 1000, // مدة الأنيميشن بالمللي ثانية
-      once: true, // يشغل الأنيميشن مرة واحدة فقط
-      easing: 'ease-in-out', // طريقة الحركة
-    });
-  }
 
-  
+
+
 
   ngAfterViewInit() {
     setTimeout(() => AOS.refresh(), 500);
